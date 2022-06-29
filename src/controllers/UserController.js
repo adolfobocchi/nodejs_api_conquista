@@ -164,8 +164,9 @@ module.exports = {
         res.json({data: rankingList});
     },
     info: async (req, res) => {
-        const id = req.params.id;
-        const user = await User.findById(id).exec();
+        const nick = req.params.nickname;
+        //const user = await User.findById(id).exec();
+        const user = await User.findOne(nick).exec();
         if(!user) {
             res.json({error: 'Usuário inválido!'});
             return;
