@@ -128,13 +128,14 @@ module.exports = {
     res.json({ msg: "Usuário alterado com sucesso" });
   },
   score: async (req, res) => {
-    const id = req.params.id;
+    const nick = req.params.nickname;
     const newScore = req.params.score;
-    const user = await User.findById(id).exec();
+    const user = await User.findOne({nick}).exec();
     if (!user) {
       res.json({ error: "Usuário inválido!" });
       return;
     }
+    const id = user._id;
     const scoreAtual = user.score;
     //const score = parseInt(scoreAtual) + parseInt(newScore);
     if (newScore > scoreAtual) {
