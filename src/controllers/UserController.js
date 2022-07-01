@@ -192,10 +192,10 @@ module.exports = {
       .select({ nick: 1, avatar: 1, ranking: 1, score: 1, _id: 0 })
       .exec();
     if (!user) {
-      res.json({ data: null });
+      res.json(null);
       return;
     }
-    res.json({ data: user });
+    res.json(user );
   },
   highScore: async (req, res) => {
     const user = await User.findOne({ ranking: { $gt: 0, $ne: 0 } })
@@ -204,9 +204,9 @@ module.exports = {
       .select({ nick: 1, avatar: 1, ranking: 1, score: 1, _id: 0 })
       .exec();
     if (!user) {
-      res.json({ data: null });
+      res.json(null);
       return;
     }
-    res.json({ data: user });
+    res.json( user );
   },
 };
