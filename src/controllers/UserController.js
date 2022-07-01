@@ -192,19 +192,19 @@ module.exports = {
       .select({ nick: 1, avatar: 1, ranking: 1, score: 1, _id: 0 })
       .exec();
     if (!user) {
-      res.json({ error: "Usuário inválido!" });
+      res.json({ data: null });
       return;
     }
     res.json({ data: user });
   },
   hightScore: async (req, res) => {
-    const user = await User.find({ ranking: { $gt: 0, $ne: 0 } })
+    const user = await User.findOne({ ranking: { $gt: 0, $ne: 0 } })
       .sort({ ranking: 1 })
       .limit(1)
       .select({ nick: 1, avatar: 1, ranking: 1, score: 1, _id: 0 })
       .exec();
     if (!user) {
-      res.json({ error: "Usuário inválido!" });
+      res.json({ data: null });
       return;
     }
     res.json({ data: user });
