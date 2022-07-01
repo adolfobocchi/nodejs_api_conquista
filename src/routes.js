@@ -13,6 +13,6 @@ router.get('/user/:nickname', UserController.info);
 router.put('/user/:id/timegame/:timeGame', UserController.timeGame);
 router.put('/user/:id/score/:score', UserController.score);
 router.get('/ranking/:qtd', UserController.ranking);
-router.get('/hightscore', UserController.hightScore);
+router.get('/highscore', UserController.highScore);
 
 module.exports = router;

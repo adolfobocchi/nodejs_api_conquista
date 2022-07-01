@@ -197,7 +197,7 @@ module.exports = {
     }
     res.json({ data: user });
   },
-  hightScore: async (req, res) => {
+  highScore: async (req, res) => {
     const user = await User.findOne({ ranking: { $gt: 0, $ne: 0 } })
       .sort({ ranking: 1 })
       .limit(1)
