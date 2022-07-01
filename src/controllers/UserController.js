@@ -166,7 +166,8 @@ module.exports = {
     info: async (req, res) => {
         const nick = req.params.nickname;
         //const user = await User.findById(id).exec();
-        const user = await User.findOne({nick}).exec();
+        
+        const user = await User.findOne({nick}).select({'nick': 1, 'avatar': 1, 'ranking': 1, 'score': 1}).exec();
         if(!user) {
             res.json({error: 'Usuário inválido!'});
             return;
